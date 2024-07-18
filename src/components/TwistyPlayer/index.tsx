@@ -39,14 +39,16 @@ const TwistyPlayer = forwardRef(
 
     useEffect(() => {
       const newTwisty = new TP({
-        experimentalStickeringMaskOrbits: customStickering ? getCustomStickeringMaskOrbits(customStickering) : undefined,
+        experimentalStickeringMaskOrbits: customStickering
+          ? getCustomStickeringMaskOrbits(customStickering)
+          : undefined,
         // override some defaults
         background: "none",
         ...props,
       });
 
       if (stickeringSetup) {
-        transformTPMask(newTwisty, stickeringSetup)
+        transformTPMask(newTwisty, stickeringSetup);
       }
 
       if (className) {
@@ -72,12 +74,12 @@ const TwistyPlayer = forwardRef(
 
 export default TwistyPlayer;
 
-
 // adapted from https://github.com/cubing/cubing.js/issues/224#issuecomment-1275928713
 async function transformTPMask(twisty: TP, transformationSource: Alg | string) {
   const kpuzzle = await cube3x3x3.kpuzzle();
-  const mask = await twisty.experimentalModel.twistySceneModel.stickeringMask.get()
-  const transformation = kpuzzle.algToTransformation(transformationSource)
+  const mask =
+    await twisty.experimentalModel.twistySceneModel.stickeringMask.get();
+  const transformation = kpuzzle.algToTransformation(transformationSource);
   const newMask = { orbits: {} };
 
   for (
@@ -103,7 +105,6 @@ async function transformTPMask(twisty: TP, transformationSource: Alg | string) {
 
   twisty.experimentalStickeringMaskOrbits = newMask;
 }
-
 
 /* Documentation for the experimentalStickeringMaskOrbits prop/attribute:
 This prop is used to customize the way pieces are highlighted on the cube,

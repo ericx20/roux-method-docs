@@ -1,0 +1,46 @@
+---
+sidebar_position: 2
+---
+
+import { PieceTypes } from "@site/src/components/Tutorial";
+
+# The Basics of the Cube
+
+Let's start by revealing one of the secrets of the Rubik's Cube.
+From the outside, it looks like a bunch of coloured stickers moving around.
+But if we open it up, this is what we see:
+
+{/* TODO: image of a cube taken apart, with pieces labelled */}
+
+It's made of pieces, which are groups of stickers that move together!
+That's how we should see the cube as: pieces, not just stickers.
+
+There are three types of pieces:
+
+<PieceTypes
+  text={{
+    corners: (
+      <p>
+        <strong>Corners</strong> are groups of three coloured stickers. They're
+        always located in these 8 spots.
+      </p>
+    ),
+    edges: (
+      <p>
+        <strong>Edges</strong> are groups of two stickers. They're always
+        located in these 12 spots.
+      </p>
+    ),
+    centers: (
+      <>
+        <p>
+          <strong>Centers</strong> have a single sticker.
+        </p>
+        <p>
+          When you turn any side, centers never move! So the solved colour of a
+          side is always the colour of the center on that side.
+        </p>
+      </>
+    ),
+  }}
+/>
